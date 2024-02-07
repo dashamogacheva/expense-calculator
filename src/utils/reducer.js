@@ -13,11 +13,11 @@ import {
 
 
 const initialState = {
-    transportSum: 100,
-    communalSum: 600,
-    supermarketSum: 450,
-    restaurantSum: 300,
-    otherExpensesSum: 150,
+    transportSum: 0,
+    communalSum: 0,
+    supermarketSum: 0,
+    restaurantSum: 0,
+    otherExpensesSum: 0,
     transportLimit: 400,
     communalLimit: 1500,
     supermarketLimit: 1000,
