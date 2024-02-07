@@ -6,6 +6,7 @@ import Select from '@mui/material/Select';
 import {useState} from "react";
 import {Button, TextField} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
+import styles from './AddingExpenses.module.css';
 
 import {
     changeCommunalSum,
@@ -35,23 +36,23 @@ export default function AddingExpenses() {
 
     const handleChangeSum = () => {
         switch (typeAction) {
-            case transportSum: {
+            case 'transportSum': {
                 dispatch(changeTransportSum(transportSum + sum));
                 break;
             }
-            case communalSum: {
+            case 'communalSum': {
                 dispatch(changeCommunalSum(communalSum + sum));
                 break;
             }
-            case supermarketSum: {
+            case 'supermarketSum': {
                 dispatch(changeSupermarketSum(supermarketSum + sum));
                 break;
             }
-            case restaurantSum: {
+            case 'restaurantSum': {
                 dispatch(changeRestaurantSum(restaurantSum + sum));
                 break;
             }
-            case otherExpensesSum: {
+            case 'otherExpensesSum': {
                 dispatch(changeOtherExpensesSum(otherExpensesSum + sum));
                 break;
             }
@@ -62,39 +63,41 @@ export default function AddingExpenses() {
     };
 
     return (
-        <Box sx={{minWidth: 120}}>
-            <FormControl sx={{width: 220}}>
-                <InputLabel id="demo-simple-select-label">Тип расходов</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={typeAction}
-                    label="Тип расходов"
-                    onChange={handleChangeType}
+        <div className={styles.container}>
+            <h2 className={styles.label}>
+                Добавить новый расход:
+            </h2>
+            <Box sx={{minWidth: 120}}>
+                <FormControl sx={{width: 220}}>
+                    <InputLabel id="demo-simple-select-label">Тип расходов</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={typeAction}
+                        label="Тип расходов"
+                        onChange={handleChangeType}
+                    >
+                        <MenuItem value='communalSum'>ЖКХ, связь, интернет</MenuItem>
+                        <MenuItem value='transportSum'>Транспорт</MenuItem>
+                        <MenuItem value='supermarketSum'>Супермаркеты</MenuItem>
+                        <MenuItem value='restaurantSum'>Рестораны</MenuItem>
+                        <MenuItem value='otherExpensesSum'>Прочие расходы</MenuItem>
+                    </Select>
+                </FormControl>
+                <TextField sx={{width: 130}}
+                           id="outlined-basic"
+                           label="Сумма"
+                           variant="outlined"
+                           type="number"
+                           onChange={(event) => setSum(+event.target.value)}
+                />
+                <Button sx={{height: 55}}
+                        variant="contained"
+                        onClick={handleChangeSum}
                 >
-                    <MenuItem value={communalSum}>ЖКХ, связь, интернет</MenuItem>
-                    <MenuItem value={transportSum}>Транспорт</MenuItem>
-                    <MenuItem value={supermarketSum}>Супермаркеты</MenuItem>
-                    <MenuItem value={restaurantSum}>Рестораны</MenuItem>
-                    <MenuItem value={otherExpensesSum}>Прочие расходы</MenuItem>
-                </Select>
-            </FormControl>
-            <TextField sx={{width: 130}}
-                       id="outlined-basic"
-                       label="Сумма"
-                       variant="outlined"
-                       type="number"
-                       onChange={(event) => setSum(+event.target.value)}
-            />
-            <Button sx={{height: 55}}
-                variant="contained"
-                onClick={handleChangeSum}
-            >
-                Добавить
-            </Button>
-        </Box>
-
+                    Добавить
+                </Button>
+            </Box>
+        </div>
     );
-
-
 }

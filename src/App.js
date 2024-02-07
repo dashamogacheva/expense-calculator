@@ -3,26 +3,34 @@ import AppHeader from "./components/AppHeader/AppHeader";
 import AddingExpenses from "./components/AddingExpenses/AddingExpenses";
 import {Provider} from "react-redux";
 import {applyMiddleware, createStore} from "redux";
-import {thunkMiddleware} from "redux-thunk";
-import { createLogger } from 'redux-logger';
+import {createLogger} from 'redux-logger';
 import {reducer} from "./utils/reducer";
-import Chart from "./components/Chart/Chart";
+import ChartExpenses from "./components/ChartExpenses/ChartExpenses";
+import ChartLimit from "./components/ChartLimit/ChartLimit";
+import AddingLimits from "./components/AddingLimits/AddingLimits";
 
 
 const loggerMiddleware = createLogger();
-const store = createStore(reducer, applyMiddleware( loggerMiddleware));
+const store = createStore(reducer, applyMiddleware(loggerMiddleware));
 
 function App() {
     return (
-        <div className="App">
-            <Provider store={store}>
+        <Provider store={store}>
+            <div className="App">
                 <AppHeader/>
-                <div className='addingExpenseve'>
-                    <AddingExpenses/>
-                    <Chart/>
+                <div className='bodyWrapper'>
+                    <div className='leftContainer'>
+                        <AddingExpenses/>
+                        <AddingLimits/>
+                    </div>
+
+                    <div className='charts'>
+                        <ChartExpenses/>
+                        <ChartLimit/>
+                    </div>
                 </div>
-            </Provider>
-        </div>
+            </div>
+        </Provider>
     );
 }
 

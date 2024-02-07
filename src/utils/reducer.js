@@ -3,16 +3,26 @@ import {
     CHANGE_COMMUNAL_SUM,
     CHANGE_SUPERMARKET_SUM,
     CHANGE_RESTAURANT_SUM,
-    CHANGE_OTHER_SUM
+    CHANGE_OTHER_SUM,
+    CHANGE_TRANSPORT_LIMIT,
+    CHANGE_COMMUNAL_LIMIT,
+    CHANGE_SUPERMARKET_LIMIT,
+    CHANGE_RESTAURANT_LIMIT,
+    CHANGE_OTHER_LIMIT
 } from './actions';
 
 
 const initialState = {
-    transportSum: 0,
-    communalSum: 0,
-    supermarketSum: 0,
-    restaurantSum: 0,
-    otherExpensesSum: 0
+    transportSum: 100,
+    communalSum: 600,
+    supermarketSum: 450,
+    restaurantSum: 300,
+    otherExpensesSum: 150,
+    transportLimit: 400,
+    communalLimit: 1500,
+    supermarketLimit: 1000,
+    restaurantLimit: 800,
+    otherExpensesLimit: 250
 };
 
 export function reducer(state = initialState, action) {
@@ -31,6 +41,21 @@ export function reducer(state = initialState, action) {
         }
         case CHANGE_OTHER_SUM: {
             return {...state, otherExpensesSum: action.otherExpensesSum};
+        }
+        case CHANGE_TRANSPORT_LIMIT: {
+            return {...state, transportLimit: action.transportLimit};
+        }
+        case CHANGE_COMMUNAL_LIMIT: {
+            return {...state, communalLimit: action.communalLimit};
+        }
+        case CHANGE_SUPERMARKET_LIMIT: {
+            return {...state, supermarketLimit: action.supermarketLimit};
+        }
+        case CHANGE_RESTAURANT_LIMIT: {
+            return {...state, restaurantLimit: action.restaurantLimit};
+        }
+        case CHANGE_OTHER_LIMIT: {
+            return {...state, otherExpensesLimit: action.otherExpensesLimit};
         }
         default: {
             return state;

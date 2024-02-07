@@ -5,7 +5,24 @@
     flex-direction: column;
 }
 
-.addingExpenseve {
+.bodyWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(244, 244, 246, 0.37);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(45, 69, 105, 0.47);
+    -webkit-box-shadow: -3px 7px 41px 3px rgba(144, 163, 178, 0.41);
+    -moz-box-shadow: -3px 7px 41px 3px rgba(144, 163, 178, 0.41);
+    box-shadow: -3px 7px 41px 3px rgba(144, 163, 178, 0.41);
+}
+
+.charts {
     margin: 50px 25px;
-    width: 50%;
 }
